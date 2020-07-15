@@ -1,20 +1,21 @@
 import { Router, RouterContext } from "oak";
 import Validator from "../../core/validator.ts";
+import { NotFound } from "../../core/HttpException.ts";
 
 const router = new Router({
   prefix: "/v2/book",
 });
 
 router.get("/", (ctx: RouterContext) => {
+
+  const h:string = "hello2"
   ctx.response.body = {
-    ctx: "book",
+    ctx: h,
   };
 });
 
 router.get("/hello", (ctx: RouterContext) => {
-  ctx.response.body = {
-    ctx: "v2 book hello",
-  };
+  throw new NotFound()
 });
 
 router.get("/search", async (ctx: RouterContext) => {

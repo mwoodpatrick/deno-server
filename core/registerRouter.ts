@@ -21,5 +21,5 @@ export default async function loadRouters(app: Application<State>) {
       }
     }
   }
-  console.log(magenta("[ load Routers successful ]"));
+  console.log(magenta("[ loadding Routers successful ]"));
 }
