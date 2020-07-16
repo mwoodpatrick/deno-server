@@ -11,6 +11,7 @@
 # 未来
 
 - 参数校验
+- 简化返回的数据的表示方法 `ctx.response.body` => `ctx.json`
 - JWT令牌集成
 - MySQL集成
 - 等等
