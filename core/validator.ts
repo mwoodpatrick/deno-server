@@ -1,4 +1,4 @@
-import { RouterContext } from "oak";
+import { RouterContext,Context } from "oak";
 import { NotFound } from "./HttpException.ts";
 
 class Validator {
@@ -20,9 +20,9 @@ class Validator {
     };
   }
 
-  async validate(ctx: any) {
+  async validate(ctx: RouterContext) {
     this.data = await this._getParameters(ctx);
-    ctx.v = this;
+    // ctx.state.prototype.v = this.data
     return this;
   }
 

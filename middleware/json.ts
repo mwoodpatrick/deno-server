@@ -1,9 +1,8 @@
-import { Context } from "oak";
-import { green } from "fmt/colors.ts";
+import { RouterContext } from "oak";
 
-const json = async (ctx: Context, next: Function) => {
+const json = async (ctx: RouterContext, next: Function) => {
 
-  ctx.response.body
+//   ctx.json = ctx.response.body
   await next();
   
 };

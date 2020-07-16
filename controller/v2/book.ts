@@ -18,10 +18,10 @@ router.get("/hello", (ctx: RouterContext) => {
   throw new NotFound()
 });
 
-router.get("/:id/search", async (ctx: any) => {
+router.get("/:id/search", async (ctx: RouterContext) => {
 
   const v = await new Validator().validate(ctx);
-  console.log(ctx.v.data);
+  // console.log(ctx.state.v.data);
   
   ctx.response.body = {
     "URL": v.get("path"),

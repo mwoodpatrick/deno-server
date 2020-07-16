@@ -9,15 +9,15 @@
       "runtimeExecutable": "deno",
       "runtimeArgs": [
         "run",
-        "--importmap=importmap.json",
-        "--unstable",
         "--inspect",
         "-A",
-        "app.ts",
-       
+        "--importmap=importmap.json",
+        "--unstable",
+        "app.ts"
       ],
-      "port": 9239,
-      "console": "integratedTerminal"
-    }
+      "port": 9229,
+      "console": "integratedTerminal",
+      "protocol": "auto",
+    },
   ]
 }
