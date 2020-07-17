@@ -2,7 +2,51 @@
 
 > 第一次尝试Deno，然后用的是oak这个框架，因为oak框架与koa相近，koa又是我用过的，因此选型用oak
 
-这个仓库可能要停更一段时间，因为断点调试现在有点问题
+# 断点
+
+断点调试我认为是解决程序运行错误的必备手段，然后通过研究发现是`VScode`官方的问题，困扰了许久，终于解决了
+但是还是存在一些小问题的，对比nodemon来说denon只适合拿来热重启，在调试的时候denon就显得逊色了不少
+
+- 给出我的解决方案
+
+VSCode配置
+
+1. 自动命中断点
+
+```ssh
+    {
+      "name": "Deno-debugger",
+      "type": "pwa-node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["run", "--inspect", "-A", "--unstable", "app.ts"],
+      "attachSimplePort": 9229,
+      "console": "integratedTerminal"
+    }
+```
+2. 手动命中断点(在deno中调试更为推荐)
+
+先启动deno debugger, 然后再启动Deno Attach
+
+```ssh
+    {
+      "name": "Deno (Attach)",
+      "type": "node",
+      "request": "attach",
+      "port": 9229
+    },
+    {
+      "name": "Deno-debugger",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["run", "--inspect", "-A", "--unstable", "app.ts"],
+      "port": 9229,
+      "console": "integratedTerminal"
+    }
+```
 
 # 启动
 

@@ -1,6 +1,7 @@
-import { green } from 'fmt/colors.ts';
-import { Application } from "./deps.ts";
+import { Application, green } from "./deps.ts";
 import registerRouter from "./core/registerRouter.ts";
+
+
 import logger from "./middleware/logger.ts";
 import catchError from './middleware/exception.ts';
 

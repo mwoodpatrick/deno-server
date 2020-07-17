@@ -1,4 +1,4 @@
-import { Application, State } from "oak";
+import { Application, State } from "../deps.ts";
 import { blue, magenta, green } from "fmt/colors.ts";
 
 export default async function loadRouters(app: Application<State>) {

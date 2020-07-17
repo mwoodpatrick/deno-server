@@ -1,4 +1,4 @@
-import { RouterContext,Context } from "oak";
+import { RouterContext } from "oak";
 import { NotFound } from "./HttpException.ts";
 
 class Validator {
@@ -48,25 +48,6 @@ class Validator {
       default:
         throw new NotFound("获取参数失败！",9998)
     }
-
-    // const q_prefix = "query.";
-    // const b_prefix = "body.";
-    // const values = path.split(".");
-    // if (path.startsWith(q_prefix)) {
-    //   const values = path.split(".");
-    //   console.log(values);
-    //   const value1 = values[0];
-    //   const value2 = values[1];
-    //   return this.data[value1].get(value2);
-    // }
-    // if (path.startsWith(b_prefix)) {
-    //   const values = path.split(".");
-    //   console.log(values);
-    //   const value1 = values[0];
-    //   const value2 = values[1];
-    //   return this.data[value1][value2];
-    // }
-    // return this.data[path];
   }
 
 }
