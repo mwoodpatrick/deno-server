@@ -12,4 +12,26 @@ router.get("/", (ctx: RouterContext) => {
   };
 });
 
+router.post('/', async ctx=>{
+  const v = await new Validator().validate(ctx);
+  console.log("v3 book post");
+  console.dir(v);
+  ctx.response.body = {
+    id:v.get('body.bookId'),
+    name:v.get("body.bookame"),
+    'hunky': 'monkey',
+  }
+})
+
+router.put('/', async ctx=>{
+  const v = await new Validator().validate(ctx);
+  console.log("v3 book put");
+  console.dir(v);
+  ctx.response.body = {
+    id:v.get('body.bookId'),
+    name:v.get("body.bookame"),
+    'hunky': 'putty',
+  }
+})
+
 export default router;
