@@ -5,11 +5,11 @@ class HttpException extends Error{
     protected msg:string;
 
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
-    constructor(msg='服务器异常',errorCode=10000,code=400){
+    constructor(msg='server different',errorCode=10000,code=400){
         super()
         this.errorCode = errorCode,
         this.code = code,
@@ -20,14 +20,14 @@ class HttpException extends Error{
 class ParameterException extends HttpException{
     
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
     constructor(msg?:string,errorCode?:Number){
         super()
         this.code = 400
-        this.msg = msg || '参数错误'
+        this.msg = msg || 'Parameter error'
         this.errorCode = errorCode || 10000
     }
 }
@@ -35,9 +35,9 @@ class ParameterException extends HttpException{
 class Success extends HttpException{
 
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
     constructor(msg?:string,errorCode?:Number){
         super()
@@ -49,42 +49,42 @@ class Success extends HttpException{
 
 class NotFound extends HttpException{
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
     constructor(msg?:string,errorCode?:Number){
         super()
         this.code = 404
-        this.msg = msg || '资源未找到'
+        this.msg = msg || 'Resource not found'
         this.errorCode = errorCode || 10000
     }
 }
 
 class AuthFailed extends HttpException{
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
     constructor(msg?:string,errorCode?:Number){
         super()
         this.code = 401
-        this.msg = msg || '授权失败'
+        this.msg = msg || 'Authorization failed'
         this.errorCode = errorCode || 10004
     }
 }
 
 class Forbidden extends HttpException {
     /**
-     * @param errorCode: 自定义code码
-     * @param code: http状态码
-     * @param msg: 返回的消息
+     * @param errorCode: Custom code
+     * @param code: http status code
+     * @param msg: Message returned
      */
     constructor(msg?:string,errorCode?:Number){
         super()
         this.code = 403
-        this.msg = msg || '禁止访问'
+        this.msg = msg || 'access to the requested resource denied'
         this.errorCode = errorCode || 10005
     }
 }

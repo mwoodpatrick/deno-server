@@ -1,17 +1,17 @@
-# 一个用Deno写的后端框架
+# A back-end framework written in Deno
 
-> 第一次尝试Deno，然后用的是oak这个框架，因为oak框架与koa相近，koa又是我用过的，因此选型用oak
+> I tried Deno for the first time, and then used the oak framework, because the oak framework is similar to koa, and koa is the one I have used, so I chose oak
 
-# 断点
+# Breakpoint
 
-断点调试我认为是解决程序运行错误的必备手段，然后通过研究发现是`VScode`官方的问题，困扰了许久，终于解决了
-但是还是存在一些小问题的，对比nodemon来说denon只适合拿来热重启，在调试的时候denon就显得逊色了不少
+I think breakpoint debugging is an indispensable means to solve program running errors, and then through research, it is found that it is an official problem of `VScode`, which has been troubled for a long time, and finally solved
+However, there are still some minor problems. Compared with nodemon, denon is only suitable for hot restart. When debugging, denon appears to be inferior.
 
-- 给出我的解决方案
+-Give my solution
 
-VSCode配置
+VSCode configuration
 
-1. 自动命中断点
+1. Automatically hit the break point
 
 ```ssh
     {
@@ -25,9 +25,9 @@ VSCode配置
       "console": "integratedTerminal"
     }
 ```
-2. 手动命中断点(在deno中调试更为推荐)
+2. Hit the breakpoint manually (debugging in deno is more recommended)
 
-先启动deno debugger, 然后再启动Deno Attach
+Start deno debugger first, then start Deno Attach
 
 ```ssh
     {
@@ -48,16 +48,16 @@ VSCode配置
     }
 ```
 
-# 启动
+# start up
 
-denon 是一个 类似与nodemon的热重启库。
+Denon is a hot restart library similar to nodemon.
 
-- denon启动(推荐)
+-denon start (recommended)
 ```sh
  denon start
 ```
 
-- deno启动
+-deno start
 
 ```ssh
 deno run -A --importmap=importmap.json --unstable app.ts
@@ -65,16 +65,16 @@ deno run -A --importmap=importmap.json --unstable app.ts
 
 
 
-# 已完成
+# completed
 
-- logger中间件
-- 路由自动加载
-- 全局异常处理
+-logger middleware
+-Route automatically loaded
+-Global exception handling
 
-# 未来
+# TODO
 
-- 参数校验
-- 简化返回的数据的表示方法 `ctx.response.body` => `ctx.json`
-- JWT令牌集成
-- MySQL集成
-- 等等
+-Parameter verification
+-Simplify the representation method of the returned data `ctx.response.body` => `ctx.json`
+-JWT token integration
+-MySQL integration
+- and many more

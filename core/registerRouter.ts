@@ -2,9 +2,9 @@ import { Application, State } from "../deps.ts";
 import { blue, magenta, green } from "fmt/colors.ts";
 
 export default async function loadRouters(app: Application<State>) {
-  // 读取目录时的路径是path
+  // The path when reading the directory is path
   const path: string = "./controller";
-  // 导出模块时的路径是paths
+  // The path when exporting the module is paths
   const paths: string = "../controller";
   const dir = await Deno.readDir(path);
 
@@ -14,7 +14,7 @@ export default async function loadRouters(app: Application<State>) {
     if (dirs) {
       for await (const file of dirs) {
         const fileName: string = file.name;
-        console.log(blue(`加载路由 ${fileName}`));
+        console.log(blue(`Load route ${fileName}`));
         const router = await import(`${paths}/${d.name}/${fileName}`);
         app.use(router.default.routes());
         app.use(router.default.allowedMethods());
