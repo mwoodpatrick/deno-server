@@ -27,9 +27,9 @@ class Validator {
   }
 
   /**
-   * body: JSON请求体
-   * query: url的查询参数
-   * pathParams: url参数
+   * body: JSON Request body
+   * query: URL query parameters
+   * pathParams: url parameter
    * @param path body,query,pathParams
    */
   get(path: string) {
@@ -40,13 +40,13 @@ class Validator {
       case "path":
         return this.data[path];
       case "body":
-        return this.data[prefix][parameter];
+        return this.data.body[parameter];
       case "query":
         return this.data[prefix].get(parameter);
       case "pathParams":
         return this.data[prefix][parameter]
       default:
-        throw new NotFound("获取参数失败！",9998)
+        throw new NotFound("Failed to get parameters！",9998)
     }
   }
 

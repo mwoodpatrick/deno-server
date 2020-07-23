@@ -16,9 +16,10 @@ router.post('/', async ctx=>{
   const v = await new Validator().validate(ctx);
   console.log("v3 book post");
   console.dir(v);
+  console.debug(v.data.body);
   ctx.response.body = {
     id:v.get('body.bookId'),
-    name:v.get("body.bookame"),
+    name:v.get("body.bookName"),
     'hunky': 'monkey',
   }
 })

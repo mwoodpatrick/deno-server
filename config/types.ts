@@ -1,10 +1,10 @@
 
 /**
- * @param dbName: 数据库名称
- * @param host: 数据库地址
- * @param port: 数据库端口号
- * @param user: 数据库用户名
- * @param password: 数据库密码
+ * @param dbName: Database name
+ * @param host: Database address
+ * @param port: Database port number
+ * @param user: database username
+ * @param password: Database password
  */
 interface mysql{
     dbName:string,
