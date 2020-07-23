@@ -20,7 +20,6 @@ router.post('/', async ctx=>{
   ctx.response.body = {
     id:v.get('body.bookId'),
     name:v.get("body.bookName"),
-    'hunky': 'monkey',
   }
 })
 
@@ -30,8 +29,7 @@ router.put('/', async ctx=>{
   console.dir(v);
   ctx.response.body = {
     id:v.get('body.bookId'),
-    name:v.get("body.bookame"),
-    'hunky': 'putty',
+    name:v.get("body.bookName"),
   }
 })
 

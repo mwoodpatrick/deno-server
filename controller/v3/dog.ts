@@ -43,24 +43,68 @@ export const getDog = ({
   response.body = { msg: `Cannot find dog ${params.name}` };
 };
 
-export const addDog = async ({
-  request,
-  response,
-}: {
-  request: any;
-  response: any;
-}) => {
+export const addDog = async (ctx : any) => {
   console.log("adding dog");
-  const r = await request;
-  const body = r.body();
-  const dog: Dog = body.value;
+  const v = await new Validator().validate(ctx);
+  ctx.response.body = {
+    name:v.get("body.name"),
+    age:v.get("body.age"),
+  }
+
+  const dog: Dog = {
+    name:v.get("body.name"),
+    age:v.get("body.age"),
+  };
 
   console.log(`Adding ${dog.name}`);
 
   dogs.push(dog);
 
-  response.body = { msg: "OK" };
-  response.status = 200;
+  console.log("new dog db");
+  console.dir(dogs);
+
+  ctx.response.status = 200;
+};
+
+export const updateDog = async (ctx:any) => {
+  const v = await new Validator().validate(ctx);
+
+  console.log("Updating dog");
+  console.dir(v);
+
+  const d: Dog = {
+    name:v.get("pathParams.name"),
+    age:v.get("body.age"),
+  };
+  
+  const u = dogs.filter((existingDog) => existingDog.name === d.name);
+  
+  if (u.length) {
+    console.log(`Updating ${d.name}`);
+    u[0].age = d.age;
+    ctx.response.status = 200;
+    ctx.response.body = { msg: "OK" };
+  }
+  else {
+    ctx.response.status = 400;
+    ctx.response.body = { msg: `Cannot find dog ${d.name}` };
+  }
+};
+
+export const removeDog = async (ctx:any) => {
+  const v = await new Validator().validate(ctx);
+  const which = v.get("pathParams.name");
+  const lengthBefore = dogs.length;
+  dogs = dogs.filter((dog) => dog.name !== which);
+
+  if (dogs.length === lengthBefore) {
+    ctx.response.status = 400;
+    ctx.response.body = { msg: `Cannot find dog ${which}` };
+    return;
+  }
+
+  ctx.response.body = { msg: "OK" };
+  ctx.response.status = 200;
 };
 
 const router = new Router({
@@ -70,6 +114,8 @@ const router = new Router({
 router
   .get("/", getDogs)
   .get("/:name", getDog)
-  .post("/", addDog);
+  .post("/", addDog)
+  .put("/:name", updateDog)
+  .delete("/:name", removeDog);
 
 export default router;
