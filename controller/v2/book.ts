@@ -6,7 +6,7 @@ const router = new Router({
   prefix: "/v2/book",
 });
 
-router.get("/", (ctx: RouterContext) => {
+router.get("/", ctx => {
 
   const h:string = "hello2"
   const h1:string = ",world!!!"

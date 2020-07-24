@@ -43,7 +43,7 @@ export const getDog = ({
   response.body = { msg: `Cannot find dog ${params.name}` };
 };
 
-export const addDog = async (ctx : any) => {
+export const addDog = async (ctx : RouterContext) => {
   console.log("adding dog");
   const v = await new Validator().validate(ctx);
   ctx.response.body = {
@@ -66,7 +66,7 @@ export const addDog = async (ctx : any) => {
   ctx.response.status = 200;
 };
 
-export const updateDog = async (ctx:any) => {
+export const updateDog = async (ctx:RouterContext) => {
   const v = await new Validator().validate(ctx);
 
   console.log("Updating dog");
@@ -91,7 +91,7 @@ export const updateDog = async (ctx:any) => {
   }
 };
 
-export const removeDog = async (ctx:any) => {
+export const removeDog = async (ctx:RouterContext) => {
   const v = await new Validator().validate(ctx);
   const which = v.get("pathParams.name");
   const lengthBefore = dogs.length;
